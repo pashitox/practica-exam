@@ -12,6 +12,23 @@ const listBooks = require('../controllers/02-controller');
 */
 
 // router.get('/books', (req, res) => {});
+router.get("/books", (req, res) => {
+  if (req.query.title) {
+    try {
+      const books = listBooks(req.query.title);
+      res.status(200).json(books);
+    } catch (error) {
+      res.status(400).json({ err: error.message });
+    }
+  } else {
+    try {
+      const books = listBooks();
+      res.status(200).json(books);
+    } catch (error) {
+      res.status(400).json({ err: error.message });
+    }
+  }
+});
   
 // No modificar nada debajo de esta línea
 module.exports = router;
