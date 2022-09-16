@@ -19,6 +19,17 @@ const utils = require('../utils');
   */  
 
 const addBook = (book) => {
+  // Escribe tu código acá
+  let books = utils.books;
+  let bookId = book.map((book) => book.id);
+  let booksId = books.map((book) => book.id);
+  let bookExist = bookId.filter((book) => booksId.includes(book));
+  if (bookExist.length > 0) {
+    throw new Error("ya esta el libro en la base de datos.");
+  } else {
+    books.push(...book);
+    return books;
+  }
   
 }
 // ⚠️ No modificar nada debajo de esta línea ⚠️
