@@ -16,7 +16,28 @@ const utils = require('../utils');
   */
 const takeBook = (id, quantity) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
-  
+  // Escribe tu código acá
+  if (!quantity) {
+    throw new Error('Cantidad requerida');
+  }
+  let book = utils.products.find((book) => book.id === id);
+  if (!book) {
+    throw new Error('Libro no encontrado');
+  }
+  if (quantity > book.stock) {
+    throw new Error('La cantidad de libros solicitados supera el stock');
+  }
+  book.stock -= quantity;
+  let today = new Date();
+  let day = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+  let date = `${day}/${month}/${year}`;
+  return {
+    book,
+    date,
+
+};
 };
   
 // ⚠️ No modificar nada debajo de esta línea ⚠️

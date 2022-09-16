@@ -20,6 +20,18 @@ const utils = require("../utils");
 
 const findBook = (book) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
+  // Escribe tu código acá
+  let bookFound = utils.books.find((b) => b.id === book.id);
+  if (!bookFound) {
+    throw new Error("no se encontro el libro solicitado");
+  }
+  if (!book.name || !book.rating || !book.genre) {
+    throw new Error("falta completar datos");
+  }
+  bookFound.name = book.name;
+  bookFound.rating = book.rating;
+  bookFound.genre = book.genre;
+  return bookFound;
   
 };
 

@@ -17,7 +17,13 @@ const utils = require("../utils");
 
 const deleteBook = (id) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
-  
+  let book = utils.books.find((book) => book.id === id);
+  if (!book) {
+    throw new Error(`no existe el libro con id: ${id}`);
+  }
+  let index = utils.books.indexOf(book);
+  utils.books.splice(index, 1);
+  return utils.books;
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️

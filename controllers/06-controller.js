@@ -27,7 +27,22 @@ const utils = require('../utils');
    */
 const classifyBooks = () => {
    // ⚠️ No modificar nada arriba de esta línea ⚠️
-}
+   if (utils.books.length === 0) {
+      throw new Error('No hay libros disponibles');
+   }
+   let generBooks = {};
+   utils.books.forEach((book) => {
+      if (generBooks[book.genero]) {
+         generBooks[book.genero].push(book);
+      } else {
+         generBooks[book.genero] = [book];
+      }
+   });
+   return generBooks;
+   
+};
+
+
 
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = classifyBooks;

@@ -12,6 +12,16 @@ const addBook = require('../controllers/01-controller')
 */
 
 // router.post('/books', (req, res) => {})
+router.post('/books', (req, res) => {
+  try {
+    addBook(req.body);
+    res.status(200).json({ msg: 'La base de datos actualizada' });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+
+  }
+});
+
 
 // No modificar nada debajo de esta línea
 module.exports = router;
