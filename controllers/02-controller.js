@@ -9,6 +9,11 @@ const utils = require('../utils');
 */
 const listBooks = () => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
+  if (utils.books.length === 0) {
+    throw new Error("no hay libros en la base de datos");
+  } else{
+    return utils.books;
+  }
   
 }
 
