@@ -1,21 +1,21 @@
-const { faker } = require('@faker-js/faker');
+const { faker } = require("@faker-js/faker");
 // ⚠️ NO MODIFICAR ESTE ARCHIVO ⚠️
 // Acá les proveemos las funciones esenciales para que
 // puedan hacer el checkpoint
- module.exports = {
+module.exports = {
   books: [],
 
   reset: function () {
     this.books = [];
   },
 
-  testBooks: function() {
+  testBooks: function () {
     return this.books;
   },
-// Genera un nuevo libro con fakerjs, si es necesario, se pueden pisar los valores en los test despues
-// Para forzar ciertos casos
-  generateBook: function() {
-    const stock = faker.datatype.number(2, 0)
+  // Genera un nuevo libro con fakerjs, si es necesario, se pueden pisar los valores en los test despues
+  // Para forzar ciertos casos
+  generateBook: function () {
+    const stock = faker.datatype.number(2, 0);
     return {
       id: faker.datatype.uuid(),
       name: faker.company.name(),
@@ -25,7 +25,7 @@ const { faker } = require('@faker-js/faker');
       rating: faker.datatype.number({ max: 100 }),
       admission: `${faker.date.past()}`,
       // Este valor se puede pisar cuando haga falta al igual que cualquier otro
-      genre: faker.music.genre()
-    }
-  }
-}
+      genre: faker.music.genre(),
+    };
+  },
+};

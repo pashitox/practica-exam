@@ -18,19 +18,12 @@ const utils = require("../utils");
 const deleteBook = (id) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
   // Escribe tu código acá
-  // ⚠️ No modificar nada debajo de esta línea ⚠️
-  if (utils.books.length === 0) {
+  let book = utils.books.filter((el) => el.id != id);
+
+  if (book.length == utils.books.length)
     throw new Error(`no existe el libro con id: ${id}`);
-  }
-  const book = utils.books.find((book) => book.id === id);
-  if (!book) {
-    throw new Error(`no existe el libro con id: ${id}`);
-  }
-  const index = utils.books.indexOf(book);
-  utils.books.splice(index, 1);
-  return utils.books;
-  
-  
+
+  return book;
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️

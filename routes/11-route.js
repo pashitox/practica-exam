@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const takeBook = require('../controllers/05-controller')
+const router = require("express").Router();
+const takeBook = require("../controllers/05-controller");
 // No modificar arriba de esta línea
 
 /*
@@ -12,7 +12,18 @@ const takeBook = require('../controllers/05-controller')
     - Recordá chequear el mensaje del error y devolver la respuesta dependiendo del mismo. 
 */
 
-// router.get('/book/:id', (req, res) => {})
+router.get("/book/:id", (req, res) => {
+  const quantity = req.query.quantity;
+  const { id } = req.params;
+
+  try {
+    res.status(200).json(takeBook(id, quantity));
+  } catch (error) {
+    res
+      .status(error.message == "Libro no encontrado" ? 404 : 400)
+      .json({ message: error.message });
+  }
+});
 
 //No modificar nada debajo de esta linea
-module.exports = router
+module.exports = router;

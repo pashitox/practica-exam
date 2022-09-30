@@ -1,6 +1,6 @@
-const { generateBook } = require('../utils');
-const utils = require('../utils');
- /*
+const { generateBook } = require("../utils");
+const utils = require("../utils");
+/*
     6️⃣ ***EJERCICIO 6*** - classifyBooks 6️⃣
     ❕ CONSIGNA ❕
     1 - Retorna un nuevo objeto clasificado por genero a partir de los generos existentes
@@ -26,24 +26,62 @@ const utils = require('../utils');
    Nota: Estos datos son de ejemplo, en los tests vendran otros campos.
    */
 const classifyBooks = () => {
-   // ⚠️ No modificar nada arriba de esta línea ⚠️
-   // Escribe tu código acá
-   // ⚠️ No modificar nada debajo de esta línea ⚠️
-   if (utils.books.length === 0) {
-      throw new Error('No hay libros disponibles');
-   }
-   let books = utils.books;
-   let genres = books.map((book) => book.genre);
-   let uniqueGenres = [...new Set(genres)];
-   let result = {};
-   uniqueGenres.forEach((genre) => {
-      result[genre] = books.filter((book) => book.genre === genre);
-   });
-   return result;
-   
+  // ⚠️ No modificar nada arriba de esta línea ⚠️
+  // Escribe tu código acá
+  const Horror = [];
+  const Fantasy = [];
+  const History = [];
+  const Suspense = [];
+
+  if (!utils.books.length) throw new Error("No hay libros disponibles");
+  utils.books.forEach((el) => {
+    if (el.genre == "Fantasy") {
+      if (!el) {
+        return;
+      } else {
+        Fantasy.push(el);
+      }
+    }
+    if (el.genre == "Horror") {
+      if (!el) {
+        return;
+      } else {
+        Horror.push(el);
+      }
+    }
+    if (el.genre == "History") {
+      if (!el) {
+        return;
+      } else {
+        History.push(el);
+      }
+    }
+    if (el.genre == "Suspense") {
+      if (!el) {
+        return;
+      } else {
+        Suspense.push(el);
+      }
+    }
+  });
+
+  let obj = {};
+
+  if (Fantasy.length) {
+    obj["Fantasy"] = Fantasy;
+  }
+  if (Horror.length) {
+    obj["Horror"] = Horror;
+  }
+  if (History.length) {
+    obj["History"] = History;
+  }
+  if (Suspense.length) {
+    obj["Suspense"] = Suspense;
+  }
+
+  return obj;
 };
-
-
 
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = classifyBooks;

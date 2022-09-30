@@ -21,18 +21,25 @@ const utils = require("../utils");
 const findBook = (book) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
   // Escribe tu código acá
-  let bookFound = utils.books.find((b) => b.id === book.id);
-  if (!bookFound) {
-    throw new Error("no se encontro el libro solicitado");
+
+  let findBook = utils.books.find((el) => el.id == book.id);
+
+  if (!findBook) throw new Error("no se encontro el libro solicitado");
+  // 1 - Debemos buscar nuestro libro en el array de books y actualizar las propiedades de name, rating y genre.
+
+  for (const key in book) {
+    if (book[key] == undefined) {
+      throw new Error("falta completar datos");
+    }
   }
-  if (!book.name || !book.rating || !book.genre) {
-    throw new Error("falta completar datos");
-  }
-  bookFound.name = book.name;
-  bookFound.rating = book.rating;
-  bookFound.genre = book.genre;
-  return bookFound;
-  
+
+  return (findBook = {
+    ...book,
+    ...findBook,
+    // name: findBook.name,
+    // rating: findBook.rating,
+    // genre: findBook.genre,
+  });
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️

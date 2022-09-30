@@ -1,4 +1,4 @@
-const utils = require('../utils');
+const utils = require("../utils");
 /*
     5️⃣ ***EJERCICIO 5*** - takeBook 5️⃣
       ❕ CONSIGNA ❕
@@ -17,27 +17,19 @@ const utils = require('../utils');
 const takeBook = (id, quantity) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
   // Escribe tu código acá
-  let bookFound = utils.books.find((b) => b.id === id);
-  if (!bookFound) {
-    throw new Error("Libro no encontrado");
-  }
-  if (!quantity) {
-    throw new Error("Cantidad requerida");
-  }
-  if (quantity > bookFound.stock) {
-    throw new Error("La cantidad de libros solicitados supera el stock");
-  }
-  bookFound.stock -= quantity;
-  let today = new Date();
-  let day = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-  let date = `${day}/${month}/${year}`;
-  return {
-    book: bookFound,
-    date: date,
 
+  let book = utils.books.find((el) => el.id == id);
+
+  if (!quantity) throw new Error("Cantidad requerida");
+
+  if (!book) throw new Error("Libro no encontrado");
+
+  if (quantity > book.stock) {
+    throw new Error("La cantidad solicitada supera el stock");
+  }
+
+  // console.log(book);
+  return { book, returnDate: new Date().toLocaleDateString() };
 };
-}
 // ⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = takeBook;
