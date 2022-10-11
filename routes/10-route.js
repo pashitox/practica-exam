@@ -21,6 +21,9 @@ router.delete("/books", (req, res) => {
     res.status(200).json({
       message: `El libro con el id ${book.id} fue eliminado correctamente`,
     });
+
+
+    
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
